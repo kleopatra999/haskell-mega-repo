@@ -268,7 +268,7 @@ conv Nil = Nil
 conv (x :* xs) = go' x xs
   where
     go' :: forall attr attrs. Value schema ent attr -> NP (Value schema ent) attrs -> NP I (MapAttrType (attr ': attrs))
-    go' (MkValue y) ys = conv ys
+    go' (MkValue y) ys = I y :* conv ys
 
 selectById'
     :: All (IAttribute schema ent) (EntityFields schema ent)
